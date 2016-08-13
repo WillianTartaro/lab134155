@@ -3,7 +3,7 @@ package entidades;
 import java.io.Serializable;
 import java.util.List;
 
-public class Vendas implements Serializable {
+public class Venda implements Serializable {
 
 	private int id;
 	private String nomeComprador;

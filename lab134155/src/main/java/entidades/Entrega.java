@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class Entrega implements Serializable {
 	
 	private int idEntrega;
-	private Vendas venda;
+	private Venda venda;
 	private String endereco;
 	
 	public int getIdEntrega() {
@@ -14,10 +14,10 @@ public class Entrega implements Serializable {
 	public void setIdEntrega(int idEntrega) {
 		this.idEntrega = idEntrega;
 	}
-	public Vendas getVenda() {
+	public Venda getVenda() {
 		return venda;
 	}
-	public void setVenda(Vendas venda) {
+	public void setVenda(Venda venda) {
 		this.venda = venda;
 	}
 	public String getEndereco() {
