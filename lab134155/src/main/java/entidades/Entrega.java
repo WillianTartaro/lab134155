@@ -1,8 +1,6 @@
-package entrega;
+package entidades;
 
 import java.io.Serializable;
-
-import vendas.Vendas;
 
 public class Entrega implements Serializable {
 	
