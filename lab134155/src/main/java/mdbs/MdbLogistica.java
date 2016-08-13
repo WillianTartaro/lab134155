@@ -11,17 +11,17 @@ import javax.jms.ObjectMessage;
 
 import entidades.Venda;
 
-@MessageDriven(name = "MdbVenda", activationConfig = {
-		@ActivationConfigProperty(propertyName = "destinationLookup", propertyValue = "topic/TopicVenda"),
-		@ActivationConfigProperty(propertyName = "destinationType", propertyValue = "javax.jms.Topic"),
+@MessageDriven(name = "MdbLogistica", activationConfig = {
+		@ActivationConfigProperty(propertyName = "destinationLookup", propertyValue = "queue/QueuePedido"),
+		@ActivationConfigProperty(propertyName = "destinationType", propertyValue = "javax.jms.Queue"),
 		@ActivationConfigProperty(propertyName = "acknowledgeMode", propertyValue = "Auto-acknowledge"),
 		@ActivationConfigProperty(propertyName = "maxSession", propertyValue = "1"),
 
 		
 })
-public class MdbVenda implements MessageListener {
+public class MdbLogistica implements MessageListener {
 
-private final static Logger LOGGER = Logger.getLogger(MdbVenda.class.toString());
+private final static Logger LOGGER = Logger.getLogger(MdbLogistica.class.toString());
 	
 	public void onMessage(Message rcvMessage) {
 		ObjectMessage msg = null;
@@ -29,7 +29,14 @@ private final static Logger LOGGER = Logger.getLogger(MdbVenda.class.toString())
 			if (rcvMessage instanceof ObjectMessage) {
 				msg = (ObjectMessage) rcvMessage;
 				Venda venda = (Venda) msg.getObject();
-				LOGGER.info("Received Message from topic: " + venda);
+				 LOGGER.info("Received Message from queue: " + venda);
+				 try {
+					Thread.sleep(30000);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				 LOGGER.info("A Entrega foi despachada.");
 			} else {
 				LOGGER.warning("Message of wrong type:" + rcvMessage.getClass().getName());
 			}
