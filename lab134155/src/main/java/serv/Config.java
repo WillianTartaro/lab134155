@@ -1,6 +1,7 @@
 package serv;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.annotation.Resource;
 import javax.inject.Inject;
@@ -19,7 +20,21 @@ import javax.servlet.http.HttpServletResponse;
 
 import entidades.Venda;
 
-@WebServlet("/Config")
+@JMSDestinationDefinitions(
+ 	    value = {
+ 	        @JMSDestinationDefinition(
+ 	            name = "java:/queue/QueuePedido",
+ 	            interfaceName = "javax.jms.Queue",
+ 	            destinationName = "QueuePedido"
+ 	        ),
+ 	        @JMSDestinationDefinition(
+ 	            name = "java:/topic/TopicVenda",
+ 	            interfaceName = "javax.jms.Topic",
+ 	            destinationName = "TopicVenda"
+  	        )
+  	    })
+
+@WebServlet(value = "/config")
 public class Config extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
@@ -36,17 +51,11 @@ public class Config extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		try {
-			boolean useTopic = req.getParameterMap().keySet().contains("topic");
-			final Destination destination = useTopic ? topic : queue;
-			Venda venda = new Venda();
-			ObjectMessage objectMessage = context.createObjectMessage();
-			objectMessage.setObject(venda);
-			context.createProducer().send(destination, objectMessage);
-
-		} catch (Throwable th) {
-			th.printStackTrace();
-		}
+		super.doGet(req, resp);
+		 		resp.setContentType("text/html");
+		 		PrintWriter out = resp.getWriter();
+		 		out.write("<h1>Quickstart: Trabalho 3º Bimestre.</h1>");
+	
 	}
 
 	@Override

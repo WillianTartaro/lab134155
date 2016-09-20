@@ -29,7 +29,7 @@ private final static Logger LOGGER = Logger.getLogger(MdbVenda.class.toString())
 			if (rcvMessage instanceof ObjectMessage) {
 				msg = (ObjectMessage) rcvMessage;
 				Venda venda = (Venda) msg.getObject();
-				LOGGER.info("Received Message from topic: " + venda);
+				LOGGER.info("Venda: Concuido");
 			} else {
 				LOGGER.warning("Message of wrong type:" + rcvMessage.getClass().getName());
 			}

@@ -29,7 +29,8 @@ private final static Logger LOGGER = Logger.getLogger(MdbLogistica.class.toStrin
 			if (rcvMessage instanceof ObjectMessage) {
 				msg = (ObjectMessage) rcvMessage;
 				Venda venda = (Venda) msg.getObject();
-				 LOGGER.info("Received Message from queue: " + venda);
+				 LOGGER.info("Logistica: Realizando");
+				 LOGGER.info("Logistica: Processando....");
 				 try {
 					Thread.sleep(30000);
 				} catch (InterruptedException e) {

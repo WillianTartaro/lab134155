@@ -5,20 +5,19 @@ import java.io.Serializable;
 public class Entrega implements Serializable {
 	
 	private int idEntrega;
-	private Venda venda;
 	private String endereco;
+	
+	public Entrega(int idEntrega, String endereco) {
+		super();
+		this.idEntrega = idEntrega;
+		this.endereco = endereco;
+	}
 	
 	public int getIdEntrega() {
 		return idEntrega;
 	}
 	public void setIdEntrega(int idEntrega) {
 		this.idEntrega = idEntrega;
-	}
-	public Venda getVenda() {
-		return venda;
-	}
-	public void setVenda(Venda venda) {
-		this.venda = venda;
 	}
 	public String getEndereco() {
 		return endereco;
