@@ -8,7 +8,10 @@ import javax.jms.JMSException;
 import javax.jms.Message;
 import javax.jms.MessageListener;
 import javax.jms.ObjectMessage;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
+import br.univel.model.Log;
 import entidades.Venda;
 
 
@@ -23,6 +26,9 @@ import entidades.Venda;
 public class MdbLog implements MessageListener{
 	
 private final static Logger LOGGER = Logger.getLogger(MdbLog.class.toString());
+
+@PersistenceContext(unitName = "lab134155-persistence-unit")
+private EntityManager em;
 	
 	public void onMessage(Message rcvMessage) {
 		ObjectMessage msg = null;
@@ -30,6 +36,15 @@ private final static Logger LOGGER = Logger.getLogger(MdbLog.class.toString());
 			if (rcvMessage instanceof ObjectMessage) {
 				msg = (ObjectMessage) rcvMessage;
 				Venda venda = (Venda) msg.getObject();
+				
+				Log log = new Log();
+				log.setMdb(MdbLog.class.toString());
+				log.setData("01/01/0000");
+				log.setHora("00:00:00");
+				log.setInformacoes("Objeto recebido: " + venda);
+				
+				em.persist(log);
+				
 				LOGGER.info("Log: Venda Concluida.");
 			} else {
 				LOGGER.warning("Message of wrong type:" + rcvMessage.getClass().getName());
