@@ -37,6 +37,8 @@ public class Venda implements Serializable {
 		this.valor = valor;
 	}
 	
+
+	
 	
 	
 }
