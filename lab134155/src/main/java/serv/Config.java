@@ -20,20 +20,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import entidades.Venda;
 
-@JMSDestinationDefinitions(
- 	    value = {
- 	        @JMSDestinationDefinition(
- 	            name = "java:/queue/QueuePedido",
- 	            interfaceName = "javax.jms.Queue",
- 	            destinationName = "QueuePedido"
- 	        ),
- 	        @JMSDestinationDefinition(
- 	            name = "java:/topic/TopicVenda",
- 	            interfaceName = "javax.jms.Topic",
- 	            destinationName = "TopicVenda"
-  	        )
-  	    })
-
 @WebServlet(value = "/config")
 public class Config extends HttpServlet {
 

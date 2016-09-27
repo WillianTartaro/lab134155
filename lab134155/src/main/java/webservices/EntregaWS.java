@@ -23,7 +23,7 @@ public class EntregaWS {
 	
 	@WebMethod(operationName = "opEntrega")
 	@WebResult(name = "resultEntrega")
-	protected void doGet(@WebParam(name = "requisicao") HttpServletRequest req, @WebParam(name = "resposta") HttpServletResponse resp) throws ServletException, IOException {
+	public Entrega doGet() throws ServletException, IOException {
 		System.out.println("Processo de entrega foi iniciado...");
 		 
 		 		Entrega entrega = new Entrega(1, "Rua EOQ");
@@ -32,9 +32,8 @@ public class EntregaWS {
 		 
 		 		processEntrega.processarEntrega(entrega);
 		 
-		 		resp.setContentType("text/html");
-				PrintWriter out = resp.getWriter();
-		 		out.write("Processo de entrega foi despachado.");
+		 		
+		 		return entrega;
 		  	
 	}
 	
