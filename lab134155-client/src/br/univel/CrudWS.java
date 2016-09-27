@@ -3,7 +3,7 @@ package br.univel;
 public class CrudWS {
 	
 	public static void main(String[] args) {
-		CadastroProdutoJaxWSService service = new CadastroProdutoJaxWSService();
+		CadastroProdutoWSService service = new CadastroProdutoJaxWSService();
 		CadastroProdutoJaxWS ews = service.getCadastroProdutoJaxWSPort();
 
 		Produto produto = new Produto();
