@@ -26,7 +26,7 @@ public class VendaWS {
 	
 	@WebMethod(operationName = "opVenda")
 	@WebResult(name = "resultVenda")
-	protected void doGet(@WebParam(name = "requisicao") HttpServletRequest req, @WebParam(name = "resposta") HttpServletResponse resp) throws ServletException, IOException {
+	public Venda doGet() throws ServletException, IOException {
 		System.out.println("Processo de venda foi iniciado...");
 		 
 		 		// Lista com itens comprados.
@@ -42,10 +42,8 @@ public class VendaWS {
 		 
 		 		// Envia o objeto
 		 		processVenda.processarVenda(venda);
+		 		return venda;
 		 
-		 		resp.setContentType("text/html");
-		 		PrintWriter out = resp.getWriter();
-		 		out.write("Processo de venda foi encaminhado.");
 		 	}
 	
 
