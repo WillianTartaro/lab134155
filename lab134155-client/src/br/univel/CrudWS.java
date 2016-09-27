@@ -1,5 +1,11 @@
 package br.univel;
 
+import java.util.List;
+
+import br.univel.wsclient.crudproduto.CadastroProdutoWS;
+import br.univel.wsclient.crudproduto.CadastroProdutoWSService;
+import br.univel.wsclient.crudproduto.Produto;
+
 public class CrudWS {
 	
 	public static void main(String[] args) {
