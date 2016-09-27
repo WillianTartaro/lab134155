@@ -3,13 +3,13 @@ package br.univel;
 public class CrudWS {
 	
 	public static void main(String[] args) {
-		CadastroProdutoWSService service = new CadastroProdutoJaxWSService();
-		CadastroProdutoJaxWS ews = service.getCadastroProdutoJaxWSPort();
+		CadastroProdutoWSService service = new CadastroProdutoWSService();
+		CadastroProdutoWS ews = service.getCadastroProdutoWSPort();
 
 		Produto produto = new Produto();
-		produto.setCodigoBarra("0123-4567-8900");
-		produto.setDescricao("PS4");
-		produto.setPreco(2000);
+		produto.setCodigoBarra("8765-9876-1234");
+		produto.setDescricao("PAIS DA EUROPA");
+		produto.setPreco(8000);
 
 		ews.criarProduto(produto);
 
@@ -19,9 +19,9 @@ public class CrudWS {
 			System.out.println(p.getDescricao());
 		}
 
-		produto.setCodigoBarra("0123-4567-8900");
-		produto.setDescricao("PS4");
-		produto.setPreco(3000);
+		produto.setCodigoBarra("8765-9876-1234");
+		produto.setDescricao("PAIS DA EUROPA");
+		produto.setPreco(8000);
 
 		ews.alterarProduto(produto);
 
